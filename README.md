@@ -1,6 +1,6 @@
 # Objects as Points
 
-This is fork from [official CenterNet](https://github.com/xingyizhou/CenterNet). Modifications has been made for working with pytorch v1.0+.
+This is a fork from [official CenterNet](https://github.com/xingyizhou/CenterNet). Modifications has been made for working with pytorch v1.0+.
 
 Tested on Ubuntu 18.04/16.04 with cuda10.0.
 
