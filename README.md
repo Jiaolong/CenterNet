@@ -1,4 +1,9 @@
 # Objects as Points
+
+This is fork from [official CenterNet](https://github.com/xingyizhou/CenterNet). Modifications has been made for working with pytorch v1.0+.
+
+Tested on Ubuntu 18.04/16.04 with cuda10.0.
+
 Object detection, 3D detection, and pose estimation using center point detection:
 ![](readme/fig2.png)
 > [**Objects as Points**](http://arxiv.org/abs/1904.07850),            
