@@ -30,13 +30,13 @@ class KITTI(data.Dataset):
       self.annot_path = os.path.join(
         self.data_dir, 'annotations', 'kitti_{}.json').format(split)
     else:
-      self.annot_path = os.path.join(self.data_dir, 
+      self.annot_path = os.path.join(self.data_dir,
         'annotations', 'kitti_{}_{}.json').format(opt.kitti_split, split)
     self.max_objs = 50
     self.class_name = [
       '__background__', 'Pedestrian', 'Car', 'Cyclist']
     self.cat_ids = {1:0, 2:1, 3:2, 4:-3, 5:-3, 6:-2, 7:-99, 8:-99, 9:-1}
-    
+
     self._data_rng = np.random.RandomState(123)
     self._eig_val = np.array([0.2141788, 0.01817699, 0.00341571],
                              dtype=np.float32)
@@ -84,6 +84,5 @@ class KITTI(data.Dataset):
   def run_eval(self, results, save_dir):
     self.save_results(results, save_dir)
     os.system('./tools/kitti_eval/evaluate_object_3d_offline ' + \
-              '../data/kitti/training/label_val ' + \
-              '{}/results/'.format(save_dir))
-    
+              '../data/kitti/training/label_2 ' + \
+              '{}/results/ 2>&1 | tee -a {}/log_test.txt'.format(save_dir, save_dir))

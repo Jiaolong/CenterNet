@@ -1,7 +1,3 @@
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
-
 # Code referenced from https://gist.github.com/gyglim/1f8dfb1b5c82627ae3efcfbbadb9f514
 import os
 import time
@@ -21,7 +17,7 @@ class Logger(object):
       os.makedirs(opt.save_dir)
     if not os.path.exists(opt.debug_dir):
       os.makedirs(opt.debug_dir)
-   
+
     time_str = time.strftime('%Y-%m-%d-%H-%M')
 
     args = dict((name, getattr(opt, name)) for name in dir(opt)
@@ -36,7 +32,7 @@ class Logger(object):
       opt_file.write('\n==> Opt:\n')
       for k, v in sorted(args.items()):
         opt_file.write('  %s: %s\n' % (str(k), str(v)))
-          
+
     log_dir = opt.save_dir + '/logs_{}'.format(time_str)
     if USE_TENSORBOARD:
       self.writer = tensorboardX.SummaryWriter(log_dir)
@@ -57,15 +53,15 @@ class Logger(object):
       time_str = time.strftime('%Y-%m-%d-%H-%M')
       self.log.write('{}: {}'.format(time_str, txt))
     else:
-      self.log.write(txt)  
+      self.log.write(txt)
     self.start_line = False
     if '\n' in txt:
       self.start_line = True
       self.log.flush()
-  
+
   def close(self):
     self.log.close()
-  
+
   def scalar_summary(self, tag, value, step):
     """Log a scalar variable."""
     if USE_TENSORBOARD:
